@@ -13,18 +13,30 @@ class App(tk.Frame):
         self.namespace_label.pack(side="top")
 
         self.namespace_listbox = tk.Listbox(self)
-        self.namespace_listbox.pack(side="top", fill="both", expand=True)
+        self.namespace_listbox.pack(side="left", fill="both", expand=True)
         self.namespace_listbox.bind('<<ListboxSelect>>', self.on_namespace_select)
+
+        self.namespace_scrollbar = tk.Scrollbar(self, orient="vertical", command=self.namespace_listbox.yview)
+        self.namespace_scrollbar.pack(side="left", fill="y")
+        self.namespace_listbox.configure(yscrollcommand=self.namespace_scrollbar.set)
 
         self.pod_label = tk.Label(self, text="Pods")
         self.pod_label.pack(side="top")
 
         self.pod_listbox = tk.Listbox(self)
-        self.pod_listbox.pack(side="top", fill="both", expand=True)
+        self.pod_listbox.pack(side="left", fill="both", expand=True)
         self.pod_listbox.bind('<<ListboxSelect>>', self.on_pod_select)
+
+        self.pod_scrollbar = tk.Scrollbar(self, orient="vertical", command=self.pod_listbox.yview)
+        self.pod_scrollbar.pack(side="left", fill="y")
+        self.pod_listbox.configure(yscrollcommand=self.pod_scrollbar.set)
 
         self.log_text = tk.Text(self, wrap='word', height=10)
         self.log_text.pack(side="bottom", fill="both", expand=True)
+
+        self.log_scrollbar = tk.Scrollbar(self, orient="vertical", command=self.log_text.yview)
+        self.log_scrollbar.pack(side="right", fill="y")
+        self.log_text.configure(yscrollcommand=self.log_scrollbar.set)
 
         self.update_namespaces()
 
