@@ -8,6 +8,7 @@ Kubernetes-Log-App is a Python-based application designed to provide a user-frie
 - [Getting Started](#getting-started)
 - [Features](#features)
 - [Usage](#usage)
+- [Technical Details](#technical-details)
 
 ## Installation
 
@@ -38,17 +39,29 @@ To run the application, execute the following command:
 python main.py
 ```
 
+
 ## Features
-- **Namespace Selection**: Easily switch between different Kubernetes namespaces.
-- **Pod Status Tracking**: View the status of all pods within the selected namespace.
-- **Log Retrieval**: Access logs of specific pods for troubleshooting and analysis.
-- **Incident Reporting**: Generate incident reports based on pod downtimes, including timestamps and reasons for downtime.
-- **User-Friendly Interface**: A GUI that provides a straightforward and intuitive user experience.
-- **Support for Multiple Clusters**: Connect to and interact with Kubernetes clusters located locally or on cloud providers like Azure and AWS.
+- **Namespace Selection**: Switch between Kubernetes namespaces easily.
+- **Pod Status Tracking**: Monitor the status of all pods within the selected namespace.
+- **Log Retrieval**: Access logs of specific pods for analysis.
+- **Incident Reporting**: Automatically generate reports for incidents based on pod downtimes, including timestamps and reasons for downtime.
+- **Color-Coded Logs**: View logs with color-coded error, warning, and info messages.
+- **Real-Time Updates**: Get real-time updates on pod statuses and logs.
+- **Incident Duration Tracking**: Track the duration of ongoing and resolved incidents.
+- **User-Friendly Interface**: Intuitive GUI for seamless interaction.
+- **Multi-Cluster Support**: Connect to various Kubernetes clusters, whether local or cloud-based.
 
 ## Usage
-1. **Start the Application**: Run `python main.py` to start the application.
-2. **Select a Namespace**: Use the dropdown menu to select the desired Kubernetes namespace.
-3. **View Pod Status**: View the list of pods and their status in the selected namespace.
-4. **Retrieve Logs**: Click on a specific pod to retrieve and display its logs.
-5. **Generate Incident Reports**: Incident reports are generated automatically based on pod downtimes and are accessible through the application.
+1. **Start the Application**: Run `python main.py`.
+2. **Select a Namespace**: Use the dropdown to choose a Kubernetes namespace.
+3. **Monitor Pod Status**: Observe the list of pods and their statuses in the selected namespace.
+4. **Access Logs**: Click on a pod to retrieve and display its logs.
+5. **View Incident Reports**: Incident reports are generated and updated in real-time, displaying ongoing and resolved incidents with their duration.
+
+## Technical Details
+
+- The application is built using `tkinter` for the GUI and the `kubernetes` Python client for interacting with the Kubernetes API.
+- It uses threading to handle real-time updates and monitoring without freezing the GUI.
+- Logs are color-coded to highlight errors, warnings, and informational messages.
+- Incident reports provide insights on pod downtimes, including the start and end times of incidents, their duration, and the number of restarts.
+- The application handles events from the Kubernetes cluster in real-time, ensuring that the displayed information is always up to date.
